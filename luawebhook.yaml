@@ -41,7 +41,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: gcr.io/istio-testing/luawebhook:mjog
+      - image: linsun/istioluawebhook:latest
         imagePullPolicy: Always
         name: luawebhook
         ports:
@@ -51,10 +51,10 @@ spec:
         - /app/scripts/plugin.lua
         - --port
         - "5000"
-        volumeMounts:
-        - name: config-volume
-          mountPath: /app/scripts
-      volumes:
-      - name: config-volume
-        configMap:
-          name: luawebhook
+#        volumeMounts:
+#        - name: config-volume
+#          mountPath: /app/scripts
+#      volumes:
+#      - name: config-volume
+#        configMap:
+#          name: luawebhook

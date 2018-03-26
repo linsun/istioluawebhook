@@ -71,12 +71,15 @@ listeners:
 
 def insert_lua(listeners, nodeid):
     for l in listeners.get("listeners", []):
-        for f in l.get("filters", []):
-            if f["name"] != "http_connection_manager":
-                continue
+        #print "adding per_connection_buffer_limit_bytes"
+        l["per_connection_buffer_limit_bytes"] = 2049264
+        #print l
+        #for f in l.get("filters", []):
+        #    if f["name"] != "http_connection_manager":
+        #        continue
 
-            ff = f["config"].get("filters", [])
-            ff.insert(0, lua_config(nodeid))
+        #    ff = f["config"].get("filters", [])
+        #    ff.insert(0, lua_config(nodeid))
 
     return listeners
 
